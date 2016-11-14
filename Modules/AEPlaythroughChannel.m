@@ -37,7 +37,8 @@ static const int kAudiobusReceiverPortConnectedToSelfChanged;
     TPCircularBuffer _buffer;
     BOOL _audiobusConnectedToSelf;
 }
-@property (nonatomic, weak) AEAudioController *audioController;
+// This is here to enable KVO deregister to work 
+@property (nonatomic, unsafe_unretained) AEAudioController *audioController;
 @end
 
 @implementation AEPlaythroughChannel

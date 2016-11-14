@@ -1151,9 +1151,11 @@ static OSStatus ioUnitRenderNotifyCallback(void *inRefCon, AudioUnitRenderAction
         }
     }
 #endif
-    
-    AEMessageQueueProcessMessagesOnRealtimeThread(_messageQueue);
-    [_messageQueue stopPolling];
+
+    if (_messageQueue) {
+        AEMessageQueueProcessMessagesOnRealtimeThread(_messageQueue);
+        [_messageQueue stopPolling];
+    }
 }
 
 #pragma mark - Channel and channel group management
